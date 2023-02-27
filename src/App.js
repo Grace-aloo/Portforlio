@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 // import Contact from './components/Contact';
 // import About from './components/About';
 // import Home from './components/Home'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [isLoggedin, setIsLoggedIn] = useState(false);

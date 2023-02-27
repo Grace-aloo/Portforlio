@@ -15,13 +15,14 @@ function NavBar({isLoggenIn,setIsLoggedIn}){
     }
     return(
         <div>
-            {/* <Link to = "/">Login</Link> */}
             {/* <Link to = "/signup">Signup</Link> */}
             <Link to = "/home">Home</Link>
             <Link to = "/about">About</Link>
             <Link to = "/contact">Contact</Link>
             <Link to = "/projects">Projects</Link>
             <Link to = "/skills">Skills</Link>
+            <Link to = "/">Log out</Link>
+
         </div>
     )
 }
