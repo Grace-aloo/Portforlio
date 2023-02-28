@@ -28,8 +28,9 @@ function Login() {
     <div className="container">
     <h1 className="text-center mb-4">Login</h1>
     
-    <form onSubmit={handleSubmit} className="row g-3">
-      <div className="form-group mb-2 col-md-6">
+    <form onSubmit={handleSubmit} >
+      <div className="row justify-content-center">
+      <div className="form-group mb-2 col-md-4">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -40,8 +41,10 @@ function Login() {
           onChange={handleChange}
           value={formData.email}
         />
+        </div>
       </div>
-      <div className="form-group mb-4 col-md-6">
+      <div className="row justify-content-center">
+      <div className="form-group mb-4 col-md-4">
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -52,6 +55,7 @@ function Login() {
           onChange={handleChange}
           value={formData.password}
         />
+      </div>
       </div>
       <center><button type="submit" className="btn btn-primary mb-4">Submit</button></center>
  

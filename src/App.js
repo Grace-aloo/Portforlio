@@ -6,7 +6,7 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 // import Contact from './components/Contact';
 // import About from './components/About';
-// import Home from './components/Home'
+ import Home from './components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
            isLoggedin={isLoggedin}
            setIsLoggedIn={setIsLoggedIn}/>
         <Routes>
-           {/* <Route path='/home' element={<Home/>}></Route> */}
+           <Route path='/home' element={<Home/>}></Route>
            {/* <Route path='/about' element={<About/>}></Route> */}
            {/* <Route path='/contact' element={<Contact/>}></Route> */}
            <Route path='/' element={<Login/>}></Route>
