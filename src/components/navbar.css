@@ -7,7 +7,7 @@
     text-transform: uppercase;
     font-weight: 300;
     font-family: 'Lora',serif;
-    background-color: "#F7BD7";
+    /* background-color: "#F7BD7"; */
     padding: 20px;
 }
 .nav-link:hover{

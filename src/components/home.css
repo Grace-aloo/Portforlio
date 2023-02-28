@@ -42,6 +42,12 @@
     background: #f7bdf7;
     color: #333;
 }
+.home-page{
+    background-image: url("./images/african-girl.jpg");
+    background-size: cover;
+    background-color: rgb(0, 0, 0, .6);
+    background-blend-mode: multiply;
+}  
 @media screen and (max-width: 1200px) {
     .tags,
     .home-page > h1:before,
