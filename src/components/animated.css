@@ -16,7 +16,7 @@
 }
 .text-animate-hover:hover{
     animation: rubberBand 1s;
-    color: #f7bdf7;
+    color:  #851485;
 }
 .text-animate-hover._1{
     animation-delay: 0.1s;

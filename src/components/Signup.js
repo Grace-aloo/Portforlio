@@ -30,8 +30,9 @@ function Signup({setIsLoggedIn}){
           <h1 className="text-center mb-4">Sign Up</h1>
 
           <form onSubmit={handleSubmit} className="row g-3">
+          <center>
         <div className="form-group mb-2 col-md-6">
-          <label htmlFor="firstname">First Name</label>
+          {/* <label htmlFor="firstname">First Name</label> */}
           <input
             type="text"
             className="form-control"
@@ -43,7 +44,7 @@ function Signup({setIsLoggedIn}){
           />
         </div>
         <div className="form-group mb-2 col-md-6">
-          <label htmlFor="lastname">Last Name</label>
+          {/* <label htmlFor="lastname">Last Name</label> */}
           <input
             type="text"
             className="form-control"
@@ -55,7 +56,7 @@ function Signup({setIsLoggedIn}){
           />
         </div>
         <div className="form-group mb-2 col-6 align-items-center">
-          <label htmlFor="username">Username</label>
+          {/* <label htmlFor="username">Username</label> */}
           <input
             type="text"
             className="form-control"
@@ -67,7 +68,7 @@ function Signup({setIsLoggedIn}){
           />
         </div>
         <div className="form-group mb-2 col-md-6">
-          <label htmlFor="email">Email</label>
+          {/* <label htmlFor="email">Email</label> */}
           <input
             type="email"
             className="form-control"
@@ -79,7 +80,7 @@ function Signup({setIsLoggedIn}){
           />
         </div>
         <div className="form-group mb-4 col-md-6">
-          <label htmlFor="password">Password</label>
+          {/* <label htmlFor="password">Password</label> */}
           <input
             type="password"
             className="form-control"
@@ -90,6 +91,7 @@ function Signup({setIsLoggedIn}){
             value={formData.password}
           />
         </div>
+        </center>
         <center><button type="submit" className="btn btn-primary mb-4">Submit</button></center>
 
         <center>
