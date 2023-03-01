@@ -1,0 +1,73 @@
+.contact-page{
+   display:flex;
+}
+
+.contact-form{
+    /* position:fixed; */
+    width:100%;
+    margin-top: 40px;
+    animation: fadeInUp 2s 2s;
+    animation-fill-mode: forwards;
+}
+.list{
+    margin-top: 50px;
+    display: inline;
+    padding: 40px;
+    color:  #eccfc7;
+}
+#name,#mail,#subject {
+  border: 0 solid 1px;
+  margin: 5px;
+  /* background: #115173; */
+  height: 50px;
+  font-size: 16px;
+  /* color: #fff; */
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+#name,#mail{
+    width: 91%;
+}
+#subject{
+    width:96%
+}
+
+#message {
+  width: 96%;
+  border: 0 solid 1px;
+  /* background: #115173; */
+  height: 50px;
+  font-size: 16px;
+  /* color: #fff; */
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 150px;
+  border-radius: 5px;
+  margin: 5px;
+
+}
+.user-input{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.5rem;
+}
+button{
+    color: #851485;
+    /* color: #eccfc7; */
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-decoration: none;
+    padding: 20px 25px;
+    border: 1px solid #eccfc7;
+    float: center;
+    border-radius: 4px;
+    background: 0 0;
+    text-transform: uppercase;
+    text-align: center;
+    margin-right: 10px;
+}
+button:hover{
+    background: #f7bdf7;
+    color: #333;
+}

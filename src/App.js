@@ -4,7 +4,7 @@ import React, { useState,useEffect } from "react";
 import Signup from './components/Signup';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-// import Contact from './components/Contact';
+import Contact from './components/Contact';
 import About from './components/About';
  import Home from './components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +20,7 @@ function App() {
         <Routes>
            <Route path='/home' element={<Home/>}></Route>
            <Route path='/about' element={<About/>}></Route>
-           {/* <Route path='/contact' element={<Contact/>}></Route> */}
+           <Route path='/contact' element={<Contact/>}></Route>
            <Route path='/' element={<Login/>}></Route>
            <Route path='/signup' element={<Signup/>}></Route>
         </Routes>
