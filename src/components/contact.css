@@ -1,5 +1,10 @@
 .contact-page{
    display:flex;
+   width:100%;
+}
+.contact{
+    height: 610px;
+    background-image: linear-gradient(to bottom, #ffffff, #f9f6fa, #f6edf3, #f4e3e8, #f2dadb, #efd3d3, #eccdcb, #e9c6c2, #e6bfbf, #e3b9bd, #dfb3bc, #daadbb);
 }
 
 .contact-form{
@@ -70,4 +75,7 @@ button{
 button:hover{
     background: #f7bdf7;
     color: #333;
+}
+.list:hover{
+    color: #851485;
 }
