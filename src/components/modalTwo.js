@@ -1,20 +1,34 @@
-import React from "react";
+import React,{useState} from "react";
 
-function ModalTwo({modalTwo,handleAddSkill,handleChange,skillData,toggleModalTwo}){
+function ModalTwo({modalTwo,handleAddSkill,skillData,toggleModalTwo}){
+    const [stateData,setState]= useState(skillData)
+
+    const handleChange = (e) => {
+        setState({
+            ...stateData,
+            [e.target.id]: e.target.value,
+        });
+    }
+    const handleSave = (e) => {
+        e.preventDefault()
+        handleAddSkill(stateData);
+        toggleModalTwo();
+      };
+
     return(
         <div>
              {modalTwo?(
             <div className="modal">
-                <div className="overlay" onClick={()=>toggleModalTwo()}></div>
+                <div className="overlay" onClick={toggleModalTwo}></div>
                 <div className="modal-content">
                     <form>
                     <center>
                         <input
                         type="text"
-                        id="names"
+                        id="name"
                         placeholder="Skill Name"
                         onChange={handleChange}
-                        value={skillData.name}
+                        value={stateData.name}
                         required
                         />
                          <input
@@ -22,12 +36,12 @@ function ModalTwo({modalTwo,handleAddSkill,handleChange,skillData,toggleModalTwo
                         id="tools"
                         placeholder="tool"
                         onChange={handleChange}
-                        value={skillData.tools}
+                        value={stateData.tools}
                         required
                         />
                         </center>
                         <button className="close-modal" onClick={toggleModalTwo}>Close</button>
-                        <center><button id="save-btn" onClick={handleAddSkill}>Add</button></center>
+                        <center><button id="save-btn" type="button" onClick={handleSave}>Add</button></center>
                     </form>
                     
                 </div>

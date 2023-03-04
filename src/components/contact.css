@@ -21,7 +21,7 @@
     padding: 40px;
     color:  #eccfc7;
 }
-#name,#mail,#subject {
+#names,#mail,#subject {
   border: 0 solid 1px;
   margin: 5px;
   /* background: #115173; */
@@ -32,7 +32,7 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
-#name,#mail{
+#names,#mail{
     width: 91%;
 }
 #subject{

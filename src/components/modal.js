@@ -1,6 +1,12 @@
 import React from "react";
 
-function Modal({modal,toggleModal,handleChange,handleUpdateSkill,skillData}){
+function Modal({modal,toggleModal,handleChange,handleUpdateSkill,skillData,skill}){
+
+    const handleSave = (e) => {
+        e.preventDefault()
+        handleUpdateSkill(skill.id);
+        toggleModal();
+      };
    return(
     <div>
           {modal &&(
@@ -25,7 +31,7 @@ function Modal({modal,toggleModal,handleChange,handleUpdateSkill,skillData}){
                         required
                         />
                         <button className="close-modal" onClick={toggleModal}>Close</button>
-                        <button id="sav-btn" onClick={handleUpdateSkill}>Save</button>
+                        <button id="save-btn" onClick={handleSave}>Save</button>
                     </form>
                     
                 </div>

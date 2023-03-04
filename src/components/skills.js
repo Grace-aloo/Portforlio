@@ -20,13 +20,14 @@ function Skills(){
         .then(res =>res.json())
         .then(data =>setSkills(data.data))
     },[])
+    
 
     function toggleModalTwo(){
         setModalTwo(!modalTwo)
     }
 
-    const toggleModal = (skill) => {
-        setSkillData({...skill,id:skill.id})
+    const toggleModal = () => {
+        // setSkillData({...skill,id:skill.id})
         setModal(!modal);
       };
 
@@ -37,8 +38,14 @@ function Skills(){
         });
       }
     
-    function handleUpdateSkill(e) {
-        fetch(`http://localhost:9292/skills/update/${skillData.id}`, {
+    function handleUpdateSkill(id) {
+      //  e.preventDefault();
+      console.log(JSON.stringify({
+        name: skillData.name,
+        tools: skillData.tools
+      }))
+
+        fetch(`http://localhost:9292/skills/update/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -89,16 +96,20 @@ function Skills(){
           console.error(error);
           // handle error
         })
-    } function handleAddSkill(e) {
-        e.preventDefault();
+    } function handleAddSkill(newData) {
+        //e.preventDefault();
+        console.log(JSON.stringify({
+          name: newData.name,
+          tools: newData.tools
+        }));
         fetch(`http://localhost:9292/skill/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            name: skillData.name,
-            tools: skillData.tools
+            name: newData.name,
+            tools: newData.tools
           })
         })
           .then((response) => {
@@ -108,8 +119,11 @@ function Skills(){
             return response.json();
           })
           .then((data) => {
-            setSkills([...skills, data]);
-            // setShowModal(false);
+            fetch(`http://localhost:9292/skills`)
+            .then(res => res.json())
+            .then(data => setSkills(data.data));
+            // setSkills([...skills, data]);
+            toggleModalTwo()
           })
           .catch((error) => {
             console.error(error);
@@ -124,6 +138,13 @@ function Skills(){
                 {skills.map(skill => (
                     <li key={skill.id}>{skill.name}
                      <div>
+                     {modal?(<Modal
+                      modal={modal}
+                      skillData={skillData}
+                      handleUpdateSkill={handleUpdateSkill}
+                      toggleModal={toggleModal}
+                      handleChange={handleChange}
+                      skill={skill}/>):null}
                        <button onClick={toggleModal} id="edit"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button>
                        <button onClick={()=>handleDeleteSkill(skill.id)}><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button>
                     </div>
@@ -137,12 +158,6 @@ function Skills(){
                     <li key={skill.id}>{skill.tools}</li>  
                 ))}
             </ul>
-            {modal?(<Modal
-            modal={modal}
-            skillData={skillData}
-            handleUpdateSkill={handleUpdateSkill}
-            toggleModal={toggleModal}
-            handleChange={handleChange}/>):null}
             {modalTwo?(<ModalTwo
             modalTwo={modalTwo}
             skillData={skillData}

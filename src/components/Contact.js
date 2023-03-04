@@ -8,7 +8,7 @@ import {faLinkedin,faGithub,faTwitter,faInstagram} from '@fortawesome/free-brand
 function Contact(){
     const [letterClass, setLetterClass] = useState('text-animate')
     const [formData, setFormData] = useState({
-        name: "",
+        names: "",
         email: "",
         subject: "",
         message:''
@@ -33,7 +33,7 @@ function Contact(){
       function handleSubmit(e) {
         e.preventDefault();
            setFormData({
-            name:'',
+            names:'',
             message:'',
             email:'',
             subject:''
@@ -121,10 +121,10 @@ function Contact(){
                     <input 
                     type="text"
                     placeholder="Name"
-                    name="name"
-                    id="name"
+                    name="names"
+                    id="names"
                     onChange={handleChange}
-                    value={formData.name}
+                    value={formData.names}
                     required
                     />
                     <input 
