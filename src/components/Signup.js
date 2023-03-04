@@ -21,8 +21,37 @@ function Signup({setIsLoggedIn}){
   }
   function handleSubmit(e) {
     e.preventDefault();
-        // setIsLoggedIn(true)
-        navigate("/");
+    console.log(JSON.stringify({
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    }));
+        fetch('http://127.0.0.1:9292/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstname: formData.firstname,
+            lastname: formData.lastname,
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+          }),
+        })
+        .then(response => {
+          if (response.ok) {
+            // setIsLoggedIn(true);
+            navigate("/");
+          } else {
+            throw new Error('Something went wrong');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });   
       
     }
     return (
@@ -41,6 +70,7 @@ function Signup({setIsLoggedIn}){
             id="firstname"
             onChange={handleChange}
             value={formData.firstname}
+            required
           />
         </div>
         <div className="form-group mb-2 col-md-6">
@@ -53,6 +83,7 @@ function Signup({setIsLoggedIn}){
             id="lastname"
             onChange={handleChange}
             value={formData.lastname}
+            required
           />
         </div>
         <div className="form-group mb-2 col-6 align-items-center">
@@ -65,6 +96,7 @@ function Signup({setIsLoggedIn}){
             id="username"
             onChange={handleChange}
             value={formData.username}
+            // required
           />
         </div>
         <div className="form-group mb-2 col-md-6">
@@ -77,6 +109,7 @@ function Signup({setIsLoggedIn}){
             id="email"
             onChange={handleChange}
             value={formData.email}
+            required
           />
         </div>
         <div className="form-group mb-4 col-md-6">
@@ -89,6 +122,7 @@ function Signup({setIsLoggedIn}){
             id="password"
             onChange={handleChange}
             value={formData.password}
+            required
           />
         </div>
         </center>

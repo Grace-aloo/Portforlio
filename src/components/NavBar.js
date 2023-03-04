@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import './navbar.css'
 import logo from './images/P.png'
 
-function NavBar({isLoggenIn,setIsLoggedIn}){
+function NavBar({isLoggedIn,setIsLoggedIn}){
     let navigate = useNavigate();
 
     function handleLogout() {
@@ -12,8 +12,9 @@ function NavBar({isLoggenIn,setIsLoggedIn}){
     function handleLogin() {
 
         setIsLoggedIn(true)
-        navigate("/login");
+        navigate("/home");
     }
+    console.log(isLoggedIn)
     return(
         <div>
 <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -41,9 +42,16 @@ function NavBar({isLoggenIn,setIsLoggedIn}){
         </li>
       </ul>
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+      {isLoggedIn?(
         <li className="nav-item">
-          <Link className="nav-link" to="/" onClick={handleLogout}>Log out</Link>
-        </li>
+          <Link className="nav-link" to='/' onClick={handleLogout}>Log out</Link>
+          </li>
+          ):(
+            <li className="nav-item">
+            <Link className="nav-link" to="/home" onClick={handleLogin}>Login</Link>
+          </li>
+            )}
+       
       </ul>
     </div>
     <img src={logo} alt="logo" style={{ width: "100px", height: "100%", position: "absolute", top: 0, left: 0 }} />

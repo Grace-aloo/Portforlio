@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
 
-function Login() {
+function Login({setIsLoggedIn}) {
  
   const [formData, setFormData] = useState({
     email: "",
@@ -19,8 +19,29 @@ function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-        
-        navigate("/home");
+
+        fetch('http://127.0.0.1:9292/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        })
+        .then(response => {
+          if (response.ok) {
+             setIsLoggedIn(true);
+            navigate("/home");
+          } else {
+            throw new Error('Something went wrong');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });   
+      
       
     }
 

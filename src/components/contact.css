@@ -4,7 +4,8 @@
 }
 .contact{
     height: 610px;
-    background-image: linear-gradient(to bottom, #ffffff, #f9f6fa, #f6edf3, #f4e3e8, #f2dadb, #efd3d3, #eccdcb, #e9c6c2, #e6bfbf, #e3b9bd, #dfb3bc, #daadbb);
+    background-image: linear-gradient(to bottom, #ffffff, #f8f3f8, #f4e6ec, #f2dadb, #eccfc7);
+    /* background-image: linear-gradient(to bottom, #ffffff, #f9f6fa, #f6edf3, #f4e3e8, #f2dadb, #efd3d3, #eccdcb, #e9c6c2, #e6bfbf, #e3b9bd, #dfb3bc, #daadbb); */
 }
 
 .contact-form{
