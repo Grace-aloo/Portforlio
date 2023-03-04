@@ -9,10 +9,10 @@ function Skills(){
     const [skills,setSkills]=useState([])
     const [modal,setModal]=useState(false)
     const [modalTwo,setModalTwo] = useState(false)
+    const [selectedSkillId,setSelectedSkillId]=useState(null)
     const [skillData,setSkillData]=useState({
         name:"",
         tools:"",
-        id: null
     })
 
     useEffect(()=>{
@@ -26,8 +26,9 @@ function Skills(){
         setModalTwo(!modalTwo)
     }
 
-    const toggleModal = () => {
-        // setSkillData({...skill,id:skill.id})
+    const toggleModal = (skill) => {
+        setSkillData({...skill, id:skill.id})
+        setSelectedSkillId(skill.id)
         setModal(!modal);
       };
 
@@ -38,11 +39,11 @@ function Skills(){
         });
       }
     
-    function handleUpdateSkill(id) {
-      //  e.preventDefault();
+    function handleUpdateSkill(id,newData) {
+      
       console.log(JSON.stringify({
-        name: skillData.name,
-        tools: skillData.tools
+        name: newData.name,
+        tools: newData.tools
       }))
 
         fetch(`http://localhost:9292/skills/update/${id}`, {
@@ -51,8 +52,8 @@ function Skills(){
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            name: skillData.name,
-            tools: skillData.tools
+            name: newData.name,
+            tools: newData.tools
           })
         })
         .then(response => {
@@ -61,17 +62,17 @@ function Skills(){
           }
           // handle successful response
           setSkills(skills.map(skill => { // update skills list with updated skill
-            if (skill.id === skillData.id) {
+            if (skill.id === selectedSkillId) {
               return {
                 ...skill,
-                name: skillData.name,
-                tools: skillData.tools
+                name: newData.name,
+                tools: newData.tools
               }
             } else {
               return skill;
             }
           }));
-          toggleModal(); // close modal
+          setSelectedSkillId(null)
         })
         .catch(error => {
           console.error(error);
@@ -145,7 +146,7 @@ function Skills(){
                       toggleModal={toggleModal}
                       handleChange={handleChange}
                       skill={skill}/>):null}
-                       <button onClick={toggleModal} id="edit"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button>
+                       <button onClick={()=>toggleModal(skill)} id="edit"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button>
                        <button onClick={()=>handleDeleteSkill(skill.id)}><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button>
                     </div>
                     </li>

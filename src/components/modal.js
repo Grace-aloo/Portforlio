@@ -1,11 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 
-function Modal({modal,toggleModal,handleChange,handleUpdateSkill,skillData,skill}){
+function Modal({modal,toggleModal,handleUpdateSkill,skillData,skill}){
+    const [stateData,setState]= useState(skillData)
+    const handleChange = (e) => {
+        setState({
+            ...stateData,
+            [e.target.id]: e.target.value,
+        });}
 
     const handleSave = (e) => {
         e.preventDefault()
-        handleUpdateSkill(skill.id);
-        toggleModal();
+        handleUpdateSkill(skill.id,stateData);
+        toggleModal(skill);
       };
    return(
     <div>
@@ -14,12 +20,13 @@ function Modal({modal,toggleModal,handleChange,handleUpdateSkill,skillData,skill
                 <div className="overlay" onClick={toggleModal}></div>
                 <div className="modal-content">
                     <form>
+                        <center>
                         <input
                         type="text"
                         id="name"
                         placeholder="Skill Name"
                         onChange={handleChange}
-                        value={skillData.name}
+                        value={stateData.name}
                         required
                         />
                          <input
@@ -27,11 +34,11 @@ function Modal({modal,toggleModal,handleChange,handleUpdateSkill,skillData,skill
                         id="tools"
                         placeholder="tool"
                         onChange={handleChange}
-                        value={skillData.tools}
+                        value={stateData.tools}
                         required
-                        />
+                        /></center>
                         <button className="close-modal" onClick={toggleModal}>Close</button>
-                        <button id="save-btn" onClick={handleSave}>Save</button>
+                        <center><button id="save-btn" onClick={handleSave}>Save</button></center>
                     </form>
                     
                 </div>
