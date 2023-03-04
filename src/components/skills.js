@@ -12,7 +12,7 @@ function Skills(){
     const [selectedSkillId,setSelectedSkillId]=useState(null)
     const [skillData,setSkillData]=useState({
         name:"",
-        tools:"",
+        tools:""
     })
 
     useEffect(()=>{
@@ -97,7 +97,8 @@ function Skills(){
           console.error(error);
           // handle error
         })
-    } function handleAddSkill(newData) {
+    } 
+    function handleAddSkill(newData) {
         //e.preventDefault();
         console.log(JSON.stringify({
           name: newData.name,
@@ -133,7 +134,7 @@ function Skills(){
         }
     return(
         <div>
-            <h1 id="skills-header">Skills</h1>
+            <center><h1 id="skills-header">Skills</h1></center>
             <p>These are the skills I have gained so far.</p>
             <ul>
                 {skills.map(skill => (

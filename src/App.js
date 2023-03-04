@@ -10,6 +10,7 @@ import About from './components/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css'
 import Skills from './components/skills';
+import Project from './components/Project';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,6 +21,7 @@ function App() {
            isLoggedIn={isLoggedIn}
            setIsLoggedIn={setIsLoggedIn}/>
         <Routes>
+           <Route path='/projects' element={<Project/>}></Route>
            <Route path='/skills' element={<Skills/>}></Route>
            <Route path='/home' element={<Home/>}></Route>
            <Route path='/about' element={<About/>}></Route>
