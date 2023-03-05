@@ -183,7 +183,7 @@ function Project(){
                       project={project}/>):null}
                     </div>
                     <div>
-                      <button onClick={()=>toggleModal(project)} id="edit"><FontAwesomeIcon icon={faEdit} />Edit</button>
+                      <button onClick={()=>toggleModal(project)} id="editable"><FontAwesomeIcon icon={faEdit} />Edit</button>
                       <button onClick={()=>handleDeleteProject(project.id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>Delete</button>
                     </div>
                     </div>)}

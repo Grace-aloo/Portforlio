@@ -98,7 +98,12 @@ function Skills(){
           // handle error
         })
     } 
+    const MAX_SKILLS = 10
     function handleAddSkill(newData) {
+      if (skills.length >= MAX_SKILLS) {
+        alert('Maximum number of skills exceeded');
+        return;
+      }
         //e.preventDefault();
         console.log(JSON.stringify({
           name: newData.name,

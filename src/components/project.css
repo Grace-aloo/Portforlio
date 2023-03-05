@@ -56,6 +56,16 @@
 #image_src{
     margin-bottom: 50px;
 }
+#project-header{
+    animation: heartBeat;
+    animation-duration: 2s;
+    animation-delay: 0.1s;
+}
+#project-header:hover{
+    animation: rubberBand;
+    animation-duration: 2s;
+    color: rgb(133, 20, 133);
+}
 
 .close-modal {
     position: absolute;

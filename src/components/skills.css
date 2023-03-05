@@ -100,5 +100,9 @@
     animation: heartBeat;
     animation-duration: 2s;
     animation-delay: 0.1s;
-
+}
+#tool-header:hover,#skills-header:hover{
+    animation: rubberBand;
+    animation-duration: 2s;
+    color: rgb(133, 20, 133);
 }
