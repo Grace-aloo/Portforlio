@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# PORTFOLIO APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+A link to the repository for the back-end can be found [here](https://github.com/Grace-aloo/ruby-project-db)
 
-In the project directory, you can run:
+Or you can visit this url
 
-### `npm start`
+ - https://github.com/Grace-aloo/ruby-project-db
+ 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a website that has the following features:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ - Users should be able to register / login to the platform.
+ 
+ - A user should be able to view all their listed projects.
+ 
+ - A user should be able to add a new project to their portfolio.
 
-### `npm test`
+ - A user should be able to update existing project data.
+ 
+ - A user should be able to delete a project.
+ 
+ - A user can have a maximum of 10 skills.
+ 
+ - A user should be able to view their listed skills.
+ 
+ - A user should be able add, update and delete their skills.
+ 
+ - In order to use the application, the user must be logged in.
+ 
+ 
+When you first open the site you will be directed to the login, if you do not have an account you can sign up. Some features will not be available if you don't login, eg you will not be able to view any of the projects or skills.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installation
+### Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    <li>VS Code</li>
+    <li>node</li>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running This Application
+Clone from this here [github](https://github.com/Grace-aloo/Portfolio)
 
-### `npm run eject`
+to clone follow this steps
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clone the repo by using the following:   
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+       https://github.com/Grace-aloo/Portfolio
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Change directory to the repo folder: 
 
-## Learn More
+        cd Portfolio
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open it in Visual Studio Code
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        code .
 
-### Code Splitting
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You should also run 
+     
+        npm start
 
-### Analyzing the Bundle Size
+The link to the website is [here](https://portfolio2-psi-peach.vercel.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Author
 
-### Making a Progressive Web App
+ Grace Aloo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+MIT
