@@ -5,23 +5,33 @@ import './skills.css'
 import Modal from "./modal";
 import ModalTwo from "./modalTwo";
 
-function Skills(){
+function Skills({userId,setUserId}){
     const [skills,setSkills]=useState([])
     const [modal,setModal]=useState(false)
     const [modalTwo,setModalTwo] = useState(false)
     const [selectedSkillId,setSelectedSkillId]=useState(null)
     const [skillData,setSkillData]=useState({
         name:"",
-        tools:""
+        tools:"",
+        user_id: userId
     })
+    console.log(userId)
 
     useEffect(()=>{
-        fetch(`http://localhost:9292/skills`)
+        fetch(`http://localhost:9292/skills/${userId}`)
         .then(res =>res.json())
         .then(data =>setSkills(data.data))
-    },[])
+    },[userId])
+    // useEffect(() => {
+    //   fetch(`http://localhost:9292/user/${userId}`, {
+    //     credentials: 'include' // include cookies in the request
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => setUserId(data.data.id))
+    //     .catch(error => console.error(error));
+    // }, [userId]);
     
-
+    
     function toggleModalTwo(){
         setModalTwo(!modalTwo)
     }
@@ -43,7 +53,8 @@ function Skills(){
       
       console.log(JSON.stringify({
         name: newData.name,
-        tools: newData.tools
+        tools: newData.tools,
+        user_id: userId
       }))
 
         fetch(`http://localhost:9292/skills/update/${id}`, {
@@ -58,7 +69,7 @@ function Skills(){
         })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Failed to update skill');
+            throw new Error('Failed to update skill,are you logged in');
           }
           // handle successful response
           setSkills(skills.map(skill => { // update skills list with updated skill
@@ -66,7 +77,8 @@ function Skills(){
               return {
                 ...skill,
                 name: newData.name,
-                tools: newData.tools
+                tools: newData.tools,
+                user_id: userId
               }
             } else {
               return skill;
@@ -88,7 +100,7 @@ function Skills(){
         })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Failed to delete skill');
+            throw new Error('Failed to delete skill,are you logged in?');
           }
           // handle successful response
           setSkills(skills.filter(skill => skill.id !== id));
@@ -107,7 +119,8 @@ function Skills(){
         //e.preventDefault();
         console.log(JSON.stringify({
           name: newData.name,
-          tools: newData.tools
+          tools: newData.tools,
+          user_id: userId
         }));
         fetch(`http://localhost:9292/skill/create`, {
           method: "POST",
@@ -116,24 +129,25 @@ function Skills(){
           },
           body: JSON.stringify({
             name: newData.name,
-            tools: newData.tools
+            tools: newData.tools,
+            user_id: userId
           })
         })
           .then((response) => {
             if (!response.ok) {
-              throw new Error("Failed to add skill");
+              throw new Error("Failed to add skill,are you logged in?");
             }
             return response.json();
           })
           .then((data) => {
-            fetch(`http://localhost:9292/skills`)
+            fetch(`http://localhost:9292/skills/${userId}`)
             .then(res => res.json())
             .then(data => setSkills(data.data));
             // setSkills([...skills, data]);
             toggleModalTwo()
           })
           .catch((error) => {
-            console.error(error);
+            alert(error);
             // handle error
           })
         }

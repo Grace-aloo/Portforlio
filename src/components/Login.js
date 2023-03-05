@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
 
-function Login({setIsLoggedIn}) {
+function Login({setIsLoggedIn,setUserId}) {
  
   const [formData, setFormData] = useState({
     email: "",
@@ -15,6 +15,10 @@ function Login({setIsLoggedIn}) {
       ...formData,
       [e.target.name]: e.target.value
     });
+  }
+  function handleLoginSuccess(response) {
+    const data = response.data
+    setUserId(data.id); // set the userId state to the id of the logged-in user
   }
 
   function handleSubmit(e) {
@@ -32,7 +36,8 @@ function Login({setIsLoggedIn}) {
         })
         .then(response => {
           if (response.ok) {
-             setIsLoggedIn(true);
+            setIsLoggedIn(true);
+            response.json().then(handleLoginSuccess)
             navigate("/home");
           } else {
             throw new Error('Something went wrong');

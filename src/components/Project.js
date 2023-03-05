@@ -5,7 +5,7 @@ import './project.css'
 import ModalFour from "./modalProjectTwo";
 import ModalThree from "./modalProject";
 
-function Project(){
+function Project({userId}){
     const [projects,setProjects]=useState([])
     const [modal,setModal]=useState(false)
     const [modalTwo,setModalTwo]=useState(false)
@@ -15,7 +15,8 @@ function Project(){
         image_src: "",
         description:"",
         site_link: "",
-        git_link: ""
+        git_link: "",
+        user_id: userId
     })
     useEffect(()=>{
         fetch(`http://localhost:9292/projects`)
@@ -48,7 +49,8 @@ function Project(){
           image_src: newData.image_src,
           description: newData.description,
           site_link: newData.site_link,
-          git_link: newData.git_link
+          git_link: newData.git_link,
+          user_id: userId
         }))
   
           fetch(`http://localhost:9292/projects/update/${id}`, {
@@ -61,12 +63,13 @@ function Project(){
               image_src: newData.image_src,
               description: newData.description,
               site_link: newData.site_link,
-              git_link: newData.git_link
+              git_link: newData.git_link,
+              user_id: userId
             })
           })
           .then(response => {
             if (!response.ok) {
-              throw new Error('Failed to update skill');
+              throw new Error('Failed to update project');
             }
             // handle successful response
             setProjects(projects.map(project => { // update skills list with updated skill
@@ -77,7 +80,8 @@ function Project(){
                   image_src: newData.image_src,
                   description: newData.description,
                   site_link: newData.site_link,
-                  git_link: newData.git_link
+                  git_link: newData.git_link,
+                  user_id: userId
                 }
               } else {
                 return project;
@@ -86,7 +90,7 @@ function Project(){
             setSelectedProjectId(null)
           })
           .catch(error => {
-            console.error(error);
+            alert(error);
             // handle error
           })
       }
@@ -99,13 +103,13 @@ function Project(){
         })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Failed to delete skill');
+            throw new Error('Failed to delete project');
           }
           // handle successful response
           setProjects(projects.filter(project => project.id !== id));
         })
         .catch(error => {
-          console.error(error);
+          alert(error);
           // handle error
         })
     } 
@@ -116,7 +120,8 @@ function Project(){
           image_src: newData.image_src,
           description: newData.description,
           site_link: newData.site_link,
-          git_link: newData.git_link
+          git_link: newData.git_link,
+          user_id: userId
         }));
         fetch(`http://localhost:9292/project/create`, {
           method: "POST",
@@ -128,12 +133,13 @@ function Project(){
             image_src: newData.image_src,
             description: newData.description,
             site_link: newData.site_link,
-            git_link: newData.git_link
+            git_link: newData.git_link,
+            user_id: userId
           })
         })
           .then((response) => {
             if (!response.ok) {
-              throw new Error("Failed to add skill");
+              throw new Error("Failed to add project");
             }
             return response.json();
           })
@@ -144,7 +150,7 @@ function Project(){
             toggleModalTwo()
           })
           .catch((error) => {
-            console.error(error);
+            alert(error);
             // handle error
           })
         }
