@@ -138,7 +138,7 @@ function Skills(){
             <p>These are the skills I have gained so far.</p>
             <ul>
                 {skills.map(skill => (
-                    <li key={skill.id}>{skill.name}
+                    <li key={skill.id} className="Skill-list">{skill.name}
                      <div>
                      {modal?(<Modal
                       modal={modal}
@@ -148,16 +148,16 @@ function Skills(){
                       handleChange={handleChange}
                       skill={skill}/>):null}
                        <button onClick={()=>toggleModal(skill)} id="edit"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button>
-                       <button onClick={()=>handleDeleteSkill(skill.id)}><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button>
+                       <button onClick={()=>handleDeleteSkill(skill.id)} id="delete"><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button>
                     </div>
                     </li>
                 ))}
             </ul>
-            <button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}>Add</FontAwesomeIcon></button>
-            <h1 id="tool-header">Tools</h1>
+            <center><button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}>Add</FontAwesomeIcon>Add Skill</button></center>
+            <center><h1 id="tool-header">Tools</h1></center>
             <ul>
                 {skills.map(skill => (
-                    <li key={skill.id}>{skill.tools}</li>  
+                    <li key={skill.id} className="Skill-list">{skill.tools}</li>  
                 ))}
             </ul>
             {modalTwo?(<ModalTwo

@@ -70,3 +70,35 @@
     align-items: center;
     padding: 7px 10px;
 }
+.Skill-list{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    width:100px;
+    height: 60px;
+    padding: 5px;
+    border: 1 solid 1px black;
+    margin: 5px;
+    background-color: #eccfc7;
+
+}
+#edit,#delete{
+    padding: 2px;
+    border: 0;
+}
+#add{
+    padding: 10px;
+    margin: 10px;
+}
+.Skill-list:hover{
+    color: white;
+    background-color:  rgba(133, 20, 133,0.5);
+}
+#tool-header,#skills-header{
+    animation: heartBeat;
+    animation-duration: 2s;
+    animation-delay: 0.1s;
+
+}

@@ -152,7 +152,7 @@ function Project(){
     return(
         <div>
             <center id="project-header"><h1>Projects</h1></center>
-            <button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}>Add</FontAwesomeIcon></button>
+            <button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>Add</button>
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 {projects.map(project=>
                     <div key={project.id} className="col">
@@ -181,10 +181,10 @@ function Project(){
                       toggleModal={toggleModal}
                       handleChange={handleChange}
                       project={project}/>):null}
-                      <div>
-                      <button onClick={()=>toggleModal(project)} id="editable"><FontAwesomeIcon icon={faEdit}>Edit</FontAwesomeIcon></button>
-                      <button onClick={()=>handleDeleteProject(project.id)}><FontAwesomeIcon icon={faTrash}>Delete</FontAwesomeIcon></button>
                     </div>
+                    <div>
+                      <button onClick={()=>toggleModal(project)} id="edit"><FontAwesomeIcon icon={faEdit} />Edit</button>
+                      <button onClick={()=>handleDeleteProject(project.id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>Delete</button>
                     </div>
                     </div>)}
             </div>
