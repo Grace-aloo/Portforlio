@@ -19,10 +19,10 @@ function Project({userId}){
         user_id: userId
     })
     useEffect(()=>{
-        fetch(`http://localhost:9292/projects`)
+        fetch(`http://localhost:9292/projects/${userId}`)
         .then(res =>res.json())
         .then(data =>setProjects(data.data))
-    },[])
+    },[userId])
     
     
     function toggleModalTwo(){
@@ -69,7 +69,7 @@ function Project({userId}){
           })
           .then(response => {
             if (!response.ok) {
-              throw new Error('Failed to update project');
+              throw new Error('Failed to update project, are you logged in?');
             }
             // handle successful response
             setProjects(projects.map(project => { // update skills list with updated skill
@@ -103,7 +103,7 @@ function Project({userId}){
         })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Failed to delete project');
+            throw new Error('Failed to delete project, are you logged in?');
           }
           // handle successful response
           setProjects(projects.filter(project => project.id !== id));
@@ -139,12 +139,12 @@ function Project({userId}){
         })
           .then((response) => {
             if (!response.ok) {
-              throw new Error("Failed to add project");
+              throw new Error("Failed to add project, are you logged in");
             }
             return response.json();
           })
           .then((data) => {
-            fetch(`http://localhost:9292/projects`)
+            fetch(`http://localhost:9292/projects/${userId}`)
             .then(res => res.json())
             .then(data => setProjects(data.data));
             toggleModalTwo()

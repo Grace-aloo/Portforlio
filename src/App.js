@@ -18,10 +18,10 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      {isLoggedIn?
-         (<NavBar
+      
+         <NavBar
            isLoggedIn={isLoggedIn}
-           setIsLoggedIn={setIsLoggedIn}/>):(null)}
+           setIsLoggedIn={setIsLoggedIn}/>
         <Routes>
            <Route path='/projects' element={<Project
            userId={userId}
