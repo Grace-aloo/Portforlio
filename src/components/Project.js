@@ -156,7 +156,7 @@ function Project({userId}){
         }
 
     return(
-        <div>
+        <div className="contained">
             <center id="project-header"><h1>Projects</h1></center>
             <button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>Add</button>
             <div className="row row-cols-1 row-cols-md-2 g-4">

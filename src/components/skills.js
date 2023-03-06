@@ -143,7 +143,7 @@ function Skills({userId,setUserId}){
           })
         }
     return(
-        <div>
+        <div className="contained">
             <center><h1 id="skills-header">Skills</h1></center>
             <p>These are the skills I have gained so far.</p>
             <ul>

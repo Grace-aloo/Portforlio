@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import { useNavigate,Link } from "react-router-dom";
+import './signup.css'
 
 function Signup({setIsLoggedIn}){
    const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ function Signup({setIsLoggedIn}){
       
     }
     return (
-        <div className="container">
+        <div className="contained">
           <h1 className="text-center mb-4">Sign Up</h1>
 
           <form onSubmit={handleSubmit} className="row g-3">
