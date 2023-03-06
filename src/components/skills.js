@@ -18,20 +18,11 @@ function Skills({userId,setUserId}){
     console.log(userId)
 
     useEffect(()=>{
-        fetch(`http://localhost:9292/skills/${userId}`)
+        fetch(`https://grace-portfolio-app.onrender.com/skills/${userId}`)
         .then(res =>res.json())
         .then(data =>setSkills(data.data))
     },[userId])
-    // useEffect(() => {
-    //   fetch(`http://localhost:9292/user/${userId}`, {
-    //     credentials: 'include' // include cookies in the request
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => setUserId(data.data.id))
-    //     .catch(error => console.error(error));
-    // }, [userId]);
-    
-    
+   
     function toggleModalTwo(){
         setModalTwo(!modalTwo)
     }
@@ -57,7 +48,7 @@ function Skills({userId,setUserId}){
         user_id: userId
       }))
 
-        fetch(`http://localhost:9292/skills/update/${id}`, {
+        fetch(`https://grace-portfolio-app.onrender.com/skills/update/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -92,7 +83,7 @@ function Skills({userId,setUserId}){
         })
     }
     function handleDeleteSkill(id) {
-        fetch(`http://localhost:9292/skill/destroy/${id}`, {
+        fetch(`https://grace-portfolio-app.onrender.com/skill/destroy/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
@@ -122,7 +113,7 @@ function Skills({userId,setUserId}){
           tools: newData.tools,
           user_id: userId
         }));
-        fetch(`http://localhost:9292/skill/create`, {
+        fetch(`https://grace-portfolio-app.onrender.com/skill/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -140,7 +131,7 @@ function Skills({userId,setUserId}){
             return response.json();
           })
           .then((data) => {
-            fetch(`http://localhost:9292/skills/${userId}`)
+            fetch(`https://grace-portfolio-app.onrender.com/skills/${userId}`)
             .then(res => res.json())
             .then(data => setSkills(data.data));
             // setSkills([...skills, data]);

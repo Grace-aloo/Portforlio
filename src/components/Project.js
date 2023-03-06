@@ -19,7 +19,7 @@ function Project({userId}){
         user_id: userId
     })
     useEffect(()=>{
-        fetch(`http://localhost:9292/projects/${userId}`)
+        fetch(`https://grace-portfolio-app.onrender.com/projects/${userId}`)
         .then(res =>res.json())
         .then(data =>setProjects(data.data))
     },[userId])
@@ -53,7 +53,7 @@ function Project({userId}){
           user_id: userId
         }))
   
-          fetch(`http://localhost:9292/projects/update/${id}`, {
+          fetch(`https://grace-portfolio-app.onrender.com/projects/update/${id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -95,7 +95,7 @@ function Project({userId}){
           })
       }
       function handleDeleteProject(id) {
-        fetch(`http://localhost:9292/project/destroy/${id}`, {
+        fetch(`https://grace-portfolio-app.onrender.com/project/destroy/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
@@ -123,7 +123,7 @@ function Project({userId}){
           git_link: newData.git_link,
           user_id: userId
         }));
-        fetch(`http://localhost:9292/project/create`, {
+        fetch(`https://grace-portfolio-app.onrender.com/project/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -144,7 +144,7 @@ function Project({userId}){
             return response.json();
           })
           .then((data) => {
-            fetch(`http://localhost:9292/projects/${userId}`)
+            fetch(`https://grace-portfolio-app.onrender.com/projects/${userId}`)
             .then(res => res.json())
             .then(data => setProjects(data.data));
             toggleModalTwo()
@@ -187,6 +187,7 @@ function Project({userId}){
                       toggleModal={toggleModal}
                       handleChange={handleChange}
                       project={project}/>):null}
+            
                     </div>
                     <div>
                       <button onClick={()=>toggleModal(project)} id="editable"><FontAwesomeIcon icon={faEdit} />Edit</button>

@@ -28,7 +28,7 @@ function Signup({setIsLoggedIn}){
       email: formData.email,
       password: formData.password,
     }));
-        fetch('http://127.0.0.1:9292/auth/signup', {
+        fetch('https://grace-portfolio-app.onrender.com/auth/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
