@@ -6,7 +6,7 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Contact from './components/Contact';
 import About from './components/About';
- import Home from './components/Home'
+import Home from './components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css'
 import Skills from './components/skills';
