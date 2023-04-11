@@ -12,7 +12,10 @@ function Modal({modal,toggleModal,handleUpdateSkill,skillData,skill}){
         e.preventDefault()
         handleUpdateSkill(skill.id,stateData);
         toggleModal(skill);
-      };
+      }
+      console.log(skill)
+
+      console.log(modal)
    return(
     <div>
           {modal &&(
@@ -30,11 +33,11 @@ function Modal({modal,toggleModal,handleUpdateSkill,skillData,skill}){
                         required
                         />
                          <input
-                        type="text"
-                        id="tools"
-                        placeholder="tool"
+                        type="number"
+                        id="percentage"
+                        placeholder="percentage"
                         onChange={handleChange}
-                        value={stateData.tools}
+                        value={stateData.percentage}
                         required
                         /></center>
                         <button className="close-modal" onClick={toggleModal}>Close</button>

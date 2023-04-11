@@ -1,7 +1,6 @@
 import './animated.css'
 
 function Animated({ letterClass, strArray, idx }){
-    console.log(letterClass);
     return (
       <span>
         {strArray.map((char, i) => (

@@ -11,17 +11,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css'
 import Skills from './components/skills';
 import Project from './components/Project';
+import { isUserLoggedIn } from './components/utils/auth';
+
 
 function App() {
   const [userId, setUserId] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = isUserLoggedIn();
+  const [loggedIn, setLoggedIn] = useState(isLoggedIn);
   return (
     <div>
       <BrowserRouter>
       
          <NavBar
-           isLoggedIn={isLoggedIn}
-           setIsLoggedIn={setIsLoggedIn}/>
+           isLoggedIn={loggedIn}
+           setIsLoggedIn={setLoggedIn}/>
         <Routes>
            <Route path='/projects' element={<Project
            userId={userId}
@@ -35,7 +38,7 @@ function App() {
            <Route path='/' element={<Login 
            userId={userId}
            setUserId={setUserId}
-           setIsLoggedIn={setIsLoggedIn}/>}></Route>
+           setIsLoggedIn={setLoggedIn}/>}></Route>
            <Route path='/signup' element={<Signup/>}></Route>
         </Routes>
       </BrowserRouter>

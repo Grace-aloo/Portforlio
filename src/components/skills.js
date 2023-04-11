@@ -4,24 +4,30 @@ import { faEdit,faTrash,faAdd } from "@fortawesome/free-solid-svg-icons";
 import './skills.css'
 import Modal from "./modal";
 import ModalTwo from "./modalTwo";
+import { getToken } from "./utils/auth";
 
-function Skills({userId,setUserId}){
+function Skills({userId}){
     const [skills,setSkills]=useState([])
     const [modal,setModal]=useState(false)
     const [modalTwo,setModalTwo] = useState(false)
     const [selectedSkillId,setSelectedSkillId]=useState(null)
     const [skillData,setSkillData]=useState({
         name:"",
-        tools:"",
-        user_id: userId
+        percentage:"",
+        // user_id: userId
     })
     console.log(userId)
-
+    const token = getToken()
     useEffect(()=>{
-        fetch(`https://grace-portfolio-app.onrender.com/skills/${userId}`)
+        fetch(`https://grace-portfolio-app.onrender.com/skills/user`,{
+          headers: {
+            // "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+          },
+        })
         .then(res =>res.json())
         .then(data =>setSkills(data.data))
-    },[userId])
+    },[token])
    
     function toggleModalTwo(){
         setModalTwo(!modalTwo)
@@ -44,18 +50,19 @@ function Skills({userId,setUserId}){
       
       console.log(JSON.stringify({
         name: newData.name,
-        tools: newData.tools,
+        percentage: newData.percentage,
         user_id: userId
       }))
 
         fetch(`https://grace-portfolio-app.onrender.com/skills/update/${id}`, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify({
             name: newData.name,
-            tools: newData.tools
+            percentage: newData.percentage
           })
         })
         .then(response => {
@@ -68,7 +75,7 @@ function Skills({userId,setUserId}){
               return {
                 ...skill,
                 name: newData.name,
-                tools: newData.tools,
+                percentage: newData.percentage,
                 user_id: userId
               }
             } else {
@@ -86,7 +93,8 @@ function Skills({userId,setUserId}){
         fetch(`https://grace-portfolio-app.onrender.com/skill/destroy/${id}`, {
           method: 'DELETE',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           }
         })
         .then(response => {
@@ -110,17 +118,18 @@ function Skills({userId,setUserId}){
         //e.preventDefault();
         console.log(JSON.stringify({
           name: newData.name,
-          tools: newData.tools,
+          percentage: newData.percentage,
           user_id: userId
         }));
         fetch(`https://grace-portfolio-app.onrender.com/skill/create`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify({
             name: newData.name,
-            tools: newData.tools,
+            percentage: newData.percentage,
             user_id: userId
           })
         })
@@ -164,12 +173,12 @@ function Skills({userId,setUserId}){
                 ))}
             </ul>
             <center><button onClick={()=>toggleModalTwo()} id="add"><FontAwesomeIcon icon={faAdd}>Add</FontAwesomeIcon>Add Skill</button></center>
-            <center><h1 id="tool-header">Tools</h1></center>
+            {/* <center><h1 id="tool-header">Tools</h1></center>
             <ul>
                 {skills.map(skill => (
                     <li key={skill.id} className="Skill-list">{skill.tools}</li>  
                 ))}
-            </ul>
+            </ul> */}
             {modalTwo?(<ModalTwo
             modalTwo={modalTwo}
             skillData={skillData}
@@ -179,6 +188,8 @@ function Skills({userId,setUserId}){
         </div>
         
     )
+   
+    
 }
 
 export default Skills

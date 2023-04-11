@@ -4,6 +4,7 @@ import { faEdit,faTrash,faAdd } from "@fortawesome/free-solid-svg-icons";
 import './project.css'
 import ModalFour from "./modalProjectTwo";
 import ModalThree from "./modalProject";
+import { getToken } from "./utils/auth";
 
 function Project({userId}){
     const [projects,setProjects]=useState([])
@@ -18,11 +19,17 @@ function Project({userId}){
         git_link: "",
         user_id: userId
     })
+    const token = getToken()
     useEffect(()=>{
-        fetch(`https://grace-portfolio-app.onrender.com/projects/${userId}`)
+        fetch(`https://grace-portfolio-app.onrender.com/projects/user`,{
+          headers: {
+            // "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+          },
+        })
         .then(res =>res.json())
         .then(data =>setProjects(data.data))
-    },[userId])
+    },[token])
     
     
     function toggleModalTwo(){
@@ -56,7 +63,8 @@ function Project({userId}){
           fetch(`https://grace-portfolio-app.onrender.com/projects/update/${id}`, {
             method: 'PUT',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
               name: newData.name,
@@ -98,7 +106,8 @@ function Project({userId}){
         fetch(`https://grace-portfolio-app.onrender.com/project/destroy/${id}`, {
           method: 'DELETE',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           }
         })
         .then(response => {
@@ -126,7 +135,9 @@ function Project({userId}){
         fetch(`https://grace-portfolio-app.onrender.com/project/create`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+
           },
           body: JSON.stringify({
             name: newData.name,

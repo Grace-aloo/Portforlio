@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
+import { saveUser,storeToken } from "./utils/auth";
 import './login.css'
 
 function Login({setIsLoggedIn,setUserId}) {
- 
+  const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -24,7 +26,7 @@ function Login({setIsLoggedIn,setUserId}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    setLoading(true)  
         fetch('https://grace-portfolio-app.onrender.com/auth/login', {
           method: 'POST',
           headers: {
@@ -37,20 +39,25 @@ function Login({setIsLoggedIn,setUserId}) {
         })
         .then(response => {
           if (response.ok) {
-            setIsLoggedIn(true);
-            response.json().then(handleLoginSuccess)
-            navigate("/home");
+            return response.json();
           } else {
-            throw new Error('Something went wrong');
+            response.json().then((err)=>setErrors([err.errors]))
           }
+          setLoading(false)
         })
-        .catch(error => {
-          console.error(error);
+        .then(data => {
+          // Store session ID in browser storage
+          setIsLoggedIn(true);
+          // console.log(data.data)
+          saveUser(data.data.id)
+          storeToken(data.data.token)
+          //  console.log(data)
+          navigate('/home');
         });   
       
       
     }
-
+  console.log(errors)
   return (
     <div className="contained">
     <h1 className="text-center mb-4">Login</h1>
@@ -84,8 +91,20 @@ function Login({setIsLoggedIn,setUserId}) {
         />
       </div>
       </div>
-      <center><button type="submit" className="btn btn-primary mb-4">Submit</button></center>
- 
+      { loading ? (<div className="d-flex align-items-center">
+                                        <strong>Please Wait...</strong>
+                        <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                        </div> ): (
+                        <center><button type="submit" className="btn btn-primary mb-4">Login</button></center>
+                        )
+            }
+      {errors.length > 0 && (
+                <div className="text-danger">
+                {errors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                ))}
+                </div>
+            )}
        <center>
       <p className="forgot-password text-right">
         Not a member <Link to="/signup">Sign up?</Link>

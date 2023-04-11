@@ -20,7 +20,6 @@ useEffect(() => {
       clearTimeout(timeout)
     }
   }, [])
-  console.log(letterClass)
 
   return (
     <div className='main'>

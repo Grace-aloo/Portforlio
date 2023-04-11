@@ -33,10 +33,10 @@ function ModalTwo({modalTwo,handleAddSkill,skillData,toggleModalTwo}){
                         />
                          <input
                         type="text"
-                        id="tools"
-                        placeholder="tool"
+                        id="percentage"
+                        placeholder="percentage"
                         onChange={handleChange}
-                        value={stateData.tools}
+                        value={stateData.percentage}
                         required
                         />
                         </center>
